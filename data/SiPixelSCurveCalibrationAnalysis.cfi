@@ -1,7 +1,6 @@
  module scurve = SiPixelSCurveCalibrationAnalysis
  {
   untracked string src = "siPixelDigis"
-  string inputCalibFile = "calib.dat_SCurve_hd-z1_bld4_5_6_dac1_070623_2x2"
   untracked uint32 fedid = 33
   string OutputTxtFile = "out.txt"
   bool PrintPixelHistos = false
