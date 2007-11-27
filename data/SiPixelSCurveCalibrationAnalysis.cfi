@@ -1,8 +1,37 @@
- module scurve = SiPixelSCurveCalibrationAnalysis
- {
-  untracked string src = "siPixelDigis"
-  untracked uint32 fedid = 33
-  string OutputTxtFile = "out.txt"
-  bool PrintPixelHistos = false
- }
+// Put here the modules you want the cfg file to use,
+// then include this file in your cfg file.
+// i.e. in SiPixelSCurveCalibration.cfg replace 'module demo = SiPixelSCurveCalibration {} '
+// with 'include "anlyzerDir/SiPixelSCurveCalibration/data/SiPixelSCurveCalibration.cfi" '.
+// (Remember that filenames are case sensitive.)
+
+module filterEmptyCalibDigis = SiPixelCalibDigiFilter {}
+
+service = DaqMonitorROOTBackEnd{}
+
+include "CondCore/DBCommon/data/CondDBCommon.cfi"
+replace CondDBCommon.timetype = "runnumber"
+replace CondDBCommon.DBParameters.messageLevel = 0
+replace CondDBCommon.DBParameters.authenticationPath="."
+
+module siPixelSCurveAnalysis = SiPixelSCurveCalibrationAnalysis {
+
+   untracked bool saveCurvesThatFlaggedBad      = false
+   untracked bool write2dHistograms             = true
+   untracked bool write2dFitResult              = true
+   untracked vstring plaquettesToSave           = {''}
+   
+//these values are all very large (or small) - user should edit them for what they want to look for
+   untracked double minimumChi2prob     = 0.4
+   untracked double minimumThreshold    = 0
+   untracked double maximumThreshold    = 260
+   untracked double minimumSigma        = 0
+   untracked double maximumSigma        = 20
+   untracked double minimumEffAsymptote = 0
+   untracked double maximumEffAsymptote = 100
+
+//parameters common to SiPixelOfflineCalibAnalysisBase
+   string outputFileName      = ""
+   InputTag DetSetVectorSiPixelCalibDigiTag = SiPixelCalibDigiProducer
+}
+
 
