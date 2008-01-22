@@ -8,11 +8,6 @@ module filterEmptyCalibDigis = SiPixelCalibDigiFilter {}
 
 service = DaqMonitorROOTBackEnd{}
 
-include "CondCore/DBCommon/data/CondDBCommon.cfi"
-replace CondDBCommon.timetype = "runnumber"
-replace CondDBCommon.DBParameters.messageLevel = 0
-replace CondDBCommon.DBParameters.authenticationPath="."
-
 module siPixelSCurveAnalysis = SiPixelSCurveCalibrationAnalysis {
 
 //setting this value to false will put all folders in one 
@@ -33,7 +28,7 @@ module siPixelSCurveAnalysis = SiPixelSCurveCalibrationAnalysis {
 
 //parameters common to SiPixelOfflineCalibAnalysisBase
    string outputFileName      = ""
-   InputTag DetSetVectorSiPixelCalibDigiTag = SiPixelCalibDigiProducer
+   InputTag DetSetVectorSiPixelCalibDigiTag = siPixelCalibDigis
 }
 
 
