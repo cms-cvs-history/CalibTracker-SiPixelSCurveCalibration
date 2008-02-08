@@ -4,10 +4,6 @@
 // with 'include "anlyzerDir/SiPixelSCurveCalibration/data/SiPixelSCurveCalibration.cfi" '.
 // (Remember that filenames are case sensitive.)
 
-module filterEmptyCalibDigis = SiPixelCalibDigiFilter {}
-
-service = DaqMonitorROOTBackEnd{}
-
 module siPixelSCurveAnalysis = SiPixelSCurveCalibrationAnalysis {
 
 //setting this value to false will put all folders in one 
