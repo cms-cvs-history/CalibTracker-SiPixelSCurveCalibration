@@ -22,9 +22,11 @@ module siPixelSCurveAnalysis = SiPixelSCurveCalibrationAnalysis {
    untracked double minimumEffAsymptote = 0
    untracked double maximumEffAsymptote = 100
 
-//parameters common to SiPixelOfflineCalibAnalysisBase
-   string outputFileName      = ""
-   InputTag DetSetVectorSiPixelCalibDigiTag = siPixelCalibDigis
+    //parameters common to SiPixelOfflineCalibAnalysisBase 
+    InputTag DetSetVectorSiPixelCalibDigiTag = siPixelCalibDigis
+    string outputFileName = "Pixel_DQM_Calibration.root" 
+    untracked bool saveFile = false
+
 }
 
 
