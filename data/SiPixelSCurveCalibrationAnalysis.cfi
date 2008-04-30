@@ -11,16 +11,23 @@ module siPixelSCurveAnalysis = SiPixelSCurveCalibrationAnalysis {
    untracked bool saveCurvesThatFlaggedBad      = false
    untracked bool write2dHistograms             = true
    untracked bool write2dFitResult              = true
-   untracked vstring plaquettesToSave           = {''}
+   untracked uint32 maxCurvesToSave             = 1000    // limit the maximum number of bad curves to save. This limit applies to both saving bad-flagged error histograms and
+                                                          // entire DetIDs
+                                                          // Watch out, setting this too high on corrupted data will cause HUGE memory consumption!
+
+   untracked vuint32 detIDsToSave              = {}      // set list of DetIDs to print save ALL (within the maxCurves limit)
+                                                          // example  { 352394505, 352394505 }  AGAIN, this will eat A LOT of memory
    
 //these values are all very large (or small) - user should edit them for what they want to look for
-   untracked double minimumChi2prob     = 0.4
+   untracked double minimumChi2prob     = 0.8
    untracked double minimumThreshold    = 0
-   untracked double maximumThreshold    = 260
+   untracked double maximumThreshold    = 255
    untracked double minimumSigma        = 0
-   untracked double maximumSigma        = 20
+   untracked double maximumSigma        = 10
    untracked double minimumEffAsymptote = 0
-   untracked double maximumEffAsymptote = 100
+   untracked double maximumEffAsymptote = 1.01  //this is a pretty silly parameter but it could be helpful for debugging in the future
+   untracked double maximumSigmaBin     = 10
+   untracked double maximumThresholdBin = 255
 
 //parameters common to SiPixelOfflineCalibAnalysisBase 
     InputTag DetSetVectorSiPixelCalibDigiTag = siPixelCalibDigis
