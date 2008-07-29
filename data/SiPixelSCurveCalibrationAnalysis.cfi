@@ -17,7 +17,12 @@ module siPixelSCurveAnalysis = SiPixelSCurveCalibrationAnalysis {
 
    untracked vuint32 detIDsToSave              = {}      // set list of DetIDs to print save ALL (within the maxCurves limit)
                                                           // example  { 352394505, 352394505 }  AGAIN, this will eat A LOT of memory
-   
+    
+    // write out the sigma and thresholds. Needed as input for hardware
+   untracked bool writeOutThresholdSummary = true
+   untracked string thresholdOutputFileName = "thresholds.txt"
+   untracked bool alsoWriteZeroThresholds = false
+
 //these values are all very large (or small) - user should edit them for what they want to look for
    untracked double minimumChi2prob     = 0.8
    untracked double minimumThreshold    = 0
